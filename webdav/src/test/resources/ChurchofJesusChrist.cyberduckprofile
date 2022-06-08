@@ -1,0 +1,63 @@
+<!--
+  ~ Copyright (c) 2002-2022 iterate GmbH. All rights reserved.
+  ~ https://cyberduck.io/
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  -->
+
+<plist version="1.0">
+    <dict>
+        <key>Protocol</key>
+        <string>dav</string>
+        <key>Vendor</key>
+        <string>churchofjesuschrist</string>
+        <key>Description</key>
+        <string>AEM</string>
+        <key>Scheme</key>
+        <string>http</string>
+        <key>Default Port</key>
+        <string>4502</string>
+        <key>Username Placeholder</key>
+        <string>Username</string>
+        <key>Password Placeholder</key>
+        <string>Password</string>
+        <key>Default Hostname</key>
+        <string>54.188.154.0</string>
+        <key>Hostname Configurable</key>
+        <true/>
+        <key>Port Configurable</key>
+        <true/>
+        <key>Anonymous Configurable</key>
+        <false/>
+        <key>Path Configurable</key>
+        <false/>
+        <key>Certificate Configurable</key>
+        <false/>
+        <key>Username Configurable</key>
+        <false/>
+        <key>Password Configurable</key>
+        <false/>
+        <key>OAuth Authorization Url</key>
+        <string>https://id.churchofjesuschrist.org/oauth2/default/v1/authorize</string>
+        <key>OAuth Token Url</key>
+        <string>https://id.churchofjesuschrist.org/oauth2/default/v1/token</string>
+        <key>OAuth Redirect Url</key>
+        <string>https://titandamoauth.churchofjesuschrist.org</string>
+        <key>OAuth Client ID</key>
+        <string>0oae0niez1oel2azq357</string>
+        <key>OAuth Client Secret</key>
+        <string>R1VyjWtwuCjkvgnJtqmDstxiYOyRwlPCUJNzX4D6</string>
+        <key>Scopes</key>
+        <array>
+            <string>profile</string>
+        </array>
+    </dict>
+</plist>

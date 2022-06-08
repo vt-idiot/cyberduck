@@ -60,4 +60,14 @@ public class DAVProtocol extends AbstractProtocol {
     public boolean isAnonymousConfigurable() {
         return true;
     }
+
+    @Override
+    public String getAuthorization() {
+        return Authorization.password.name();
+    }
+
+    public enum Authorization {
+        password,
+        oauth
+    }
 }
