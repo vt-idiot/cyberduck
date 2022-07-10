@@ -303,6 +303,9 @@ public class RequestEntityRestStorageService extends RestS3Service {
     @Override
     protected boolean getDisableDnsBuckets() {
         if(InetAddressUtils.isIPv4Address(session.getHost().getHostname()) || InetAddressUtils.isIPv6Address(session.getHost().getHostname())) {
+            if(log.isWarnEnabled()) {
+                log.warn(String.format("Disable virtual host style requests for hostname %s", session.getHost().getHostname()));
+            }
             return true;
         }
         return new HostPreferences(session.getHost()).getBoolean("s3.bucket.virtualhost.disable");
