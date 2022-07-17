@@ -35,6 +35,7 @@ import ch.cyberduck.core.transfer.TransferStatus;
 
 import org.apache.http.Header;
 import org.apache.http.HttpHeaders;
+import org.apache.http.HttpStatus;
 import org.apache.http.entity.AbstractHttpEntity;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.protocol.HTTP;
@@ -75,9 +76,15 @@ public class DAVWriteFeature extends AbstractHttpWriteFeature<Void> implements W
         }
         catch(InteroperabilityException e) {
             if(null != status.getLockId()) {
-                // Handle 412 Precondition Failed with expired token
-                log.warn(String.format("Retry failure %s with lock id %s removed", e, status.getLockId()));
-                return this.write(file, this.getHeaders(file, status.withLockId(null)), status);
+                if(e.getCause() instanceof SardineException) {
+                    final SardineException cause = (SardineException) e.getCause();
+                    switch(cause.getStatusCode()) {
+                        case HttpStatus.SC_PRECONDITION_FAILED:
+                            // Handle 412 Precondition Failed with expired token
+                            log.warn(String.format("Retry failure %s with lock id %s removed", e, status.getLockId()));
+                            return this.write(file, this.getHeaders(file, status.withLockId(null)), status);
+                    }
+                }
             }
             throw e;
         }
