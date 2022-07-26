@@ -31,7 +31,7 @@ namespace Ch.Cyberduck.Core.Refresh.ViewModels.Preferences.Pages
                 return provider.Profiles;
             });
 
-            var profiles = LoadProfiles.Switch()
+            var profiles = LoadProfiles.DistinctUntilChanged().Switch()
                 .Filter(x => x.getProfile().isPresent())
                 .Filter(this.WhenAnyValue(v => v.FilterText)
                     .Throttle(TimeSpan.FromMilliseconds(500))
