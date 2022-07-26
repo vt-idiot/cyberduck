@@ -25,13 +25,9 @@ namespace Ch.Cyberduck.Core.Refresh.ViewModels.Preferences.Pages
 
         public ProfilesViewModel(ProtocolFactory protocols, ProfileListObserver profileListObserver, ProfilesProvider provider)
         {
-            LoadProfiles = ReactiveCommand.Create(() =>
-            {
-                Busy = true;
-                return provider.Profiles;
-            });
+            LoadProfiles = ReactiveCommand.Create(() => provider.Profiles);
 
-            var profiles = LoadProfiles.DistinctUntilChanged().Switch()
+            var profiles = LoadProfiles.DistinctUntilChanged().Do(_ => Busy = true).Switch()
                 .Filter(x => x.getProfile().isPresent())
                 .Filter(this.WhenAnyValue(v => v.FilterText)
                     .Throttle(TimeSpan.FromMilliseconds(500))
